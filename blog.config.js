@@ -3,7 +3,7 @@ const BLOG = {
   author: "Ben Mitchinson",
   email: "mitchinson.dev@gmail.com",
   link: "https://mitchinson.dev",
-  description: "Projects as a software engineer",
+  description: "",
   lang: "en-US", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   appearance: "auto", // ['light', 'dark', 'auto'],
   font: "sans-serif", // ['sans-serif', 'serif']
