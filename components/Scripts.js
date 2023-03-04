@@ -1,9 +1,9 @@
-import Script from 'next/script'
-import BLOG from '@/blog.config'
+import Script from "next/script";
+import BLOG from "@/blog.config";
 
 const Scripts = () => (
   <>
-    {BLOG.analytics && BLOG.analytics.provider === 'ackee' && (
+    {BLOG.analytics && BLOG.analytics.provider === "ackee" && (
       <Script
         src={BLOG.analytics.ackeeConfig.tracker}
         data-ackee-server={BLOG.analytics.ackeeConfig.dataAckeeServer}
@@ -27,7 +27,7 @@ const Scripts = () => (
           window.addEventListener('scroll',scrollTrigger);`}
       </Script>
     )} */}
-    {BLOG.analytics && BLOG.analytics.provider === 'ga' && (
+    {BLOG.analytics && BLOG.analytics.provider === "ga" && (
       <>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${BLOG.analytics.gaConfig.measurementId}`}
@@ -43,6 +43,6 @@ const Scripts = () => (
       </>
     )}
   </>
-)
+);
 
-export default Scripts
+export default Scripts;

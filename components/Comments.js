@@ -1,33 +1,33 @@
-import { fetchCusdisLang } from '@/lib/cusdisLang'
-import BLOG from '@/blog.config'
-import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router'
-import 'gitalk/dist/gitalk.css'
+import { fetchCusdisLang } from "@/lib/cusdisLang";
+import BLOG from "@/blog.config";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import "gitalk/dist/gitalk.css";
 
 const GitalkComponent = dynamic(
   () => {
-    return import('gitalk/dist/gitalk-component')
+    return import("gitalk/dist/gitalk-component");
   },
   { ssr: false }
-)
+);
 const UtterancesComponent = dynamic(
   () => {
-    return import('@/components/Utterances')
+    return import("@/components/Utterances");
   },
   { ssr: false }
-)
+);
 const CusdisComponent = dynamic(
   () => {
-    return import('react-cusdis').then(m => m.ReactCusdis)
+    return import("react-cusdis").then((m) => m.ReactCusdis);
   },
   { ssr: false }
-)
+);
 
 const Comments = ({ frontMatter }) => {
-  const router = useRouter()
+  const router = useRouter();
   return (
     <div>
-      {BLOG.comment && BLOG.comment.provider === 'gitalk' && (
+      {BLOG.comment && BLOG.comment.provider === "gitalk" && (
         <GitalkComponent
           options={{
             id: frontMatter.id,
@@ -37,28 +37,28 @@ const Comments = ({ frontMatter }) => {
             repo: BLOG.comment.gitalkConfig.repo,
             owner: BLOG.comment.gitalkConfig.owner,
             admin: BLOG.comment.gitalkConfig.admin,
-            distractionFreeMode: BLOG.comment.gitalkConfig.distractionFreeMode
+            distractionFreeMode: BLOG.comment.gitalkConfig.distractionFreeMode,
           }}
         />
       )}
-      {BLOG.comment && BLOG.comment.provider === 'utterances' && (
+      {BLOG.comment && BLOG.comment.provider === "utterances" && (
         <UtterancesComponent issueTerm={frontMatter.id} />
       )}
-      {BLOG.comment && BLOG.comment.provider === 'cusdis' && (
+      {BLOG.comment && BLOG.comment.provider === "cusdis" && (
         <CusdisComponent
-        lang={fetchCusdisLang()}
+          lang={fetchCusdisLang()}
           attrs={{
             host: BLOG.comment.cusdisConfig.host,
             appId: BLOG.comment.cusdisConfig.appId,
             pageId: frontMatter.id,
             pageTitle: frontMatter.title,
             pageUrl: BLOG.link + router.asPath,
-            theme: BLOG.appearance
+            theme: BLOG.appearance,
           }}
         />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Comments
+export default Comments;

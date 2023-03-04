@@ -1,18 +1,18 @@
-import { useState } from 'react'
-import BlogPost from '@/components/BlogPost'
-import Container from '@/components/Container'
-import Tags from '@/components/Tags'
-import PropTypes from 'prop-types'
+import { useState } from "react";
+import BlogPost from "@/components/BlogPost";
+import Container from "@/components/Container";
+import Tags from "@/components/Tags";
+import PropTypes from "prop-types";
 
 const SearchLayout = ({ tags, posts, currentTag }) => {
-  const [searchValue, setSearchValue] = useState('')
-  let filteredBlogPosts = []
+  const [searchValue, setSearchValue] = useState("");
+  let filteredBlogPosts = [];
   if (posts) {
-    filteredBlogPosts = posts.filter(post => {
-      const tagContent = post.tags ? post.tags.join(' ') : ''
-      const searchContent = post.title + post.summary + tagContent
-      return searchContent.toLowerCase().includes(searchValue.toLowerCase())
-    })
+    filteredBlogPosts = posts.filter((post) => {
+      const tagContent = post.tags ? post.tags.join(" ") : "";
+      const searchContent = post.title + post.summary + tagContent;
+      return searchContent.toLowerCase().includes(searchValue.toLowerCase());
+    });
   }
 
   return (
@@ -21,10 +21,10 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
         <input
           type="text"
           placeholder={
-            currentTag ? `Search in #${currentTag}` : 'Search Articles'
+            currentTag ? `Search in #${currentTag}` : "Search Articles"
           }
           className="block w-full border px-4 py-2 border-black bg-white text-black dark:bg-night dark:border-white dark:text-white"
-          onChange={e => setSearchValue(e.target.value)}
+          onChange={(e) => setSearchValue(e.target.value)}
         />
         <svg
           className="absolute right-3 top-3 h-5 w-5 text-black dark:text-white"
@@ -41,24 +41,21 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
           ></path>
         </svg>
       </div>
-      <Tags
-        tags={tags}
-        currentTag={currentTag}
-      />
+      <Tags tags={tags} currentTag={currentTag} />
       <div className="article-container my-8">
         {!filteredBlogPosts.length && (
           <p className="text-gray-500 dark:text-gray-300">No posts found.</p>
         )}
-        {filteredBlogPosts.slice(0, 20).map(post => (
+        {filteredBlogPosts.slice(0, 20).map((post) => (
           <BlogPost key={post.id} post={post} />
         ))}
       </div>
     </Container>
-  )
-}
+  );
+};
 SearchLayout.propTypes = {
   posts: PropTypes.array.isRequired,
   tags: PropTypes.object.isRequired,
-  currentTag: PropTypes.string
-}
-export default SearchLayout
+  currentTag: PropTypes.string,
+};
+export default SearchLayout;
