@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Container from "@/components/Container";
 import TagItem from "@/components/TagItem";
-import { NotionRenderer, Equation, Collection } from "react-notion-x";
+import { NotionRenderer } from "react-notion-x";
 import BLOG from "@/blog.config";
 import formatDate from "@/lib/formatDate";
 import { useLocale } from "@/lib/locale";
@@ -75,9 +75,7 @@ const Layout = ({
             <NotionRenderer
               recordMap={blockMap}
               components={{
-                Equation: Equation,
                 Code: Code,
-                Collection: Collection,
                 nextImage: Image,
                 nextLink: Link,
               }}
