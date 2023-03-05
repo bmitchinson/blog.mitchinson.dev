@@ -89,7 +89,7 @@ body::-webkit-scrollbar-thumb {
   display: none;
   opacity: 0;
   overflow: hidden;
-  padding-top: .1rem;
+  padding: .1rem 0 0 2rem;
 }
 
 .sticky-nav-full .nav {
