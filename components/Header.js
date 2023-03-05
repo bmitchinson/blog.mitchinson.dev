@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import BLOG from "@/blog.config";
 import { useLocale } from "@/lib/locale";
@@ -28,10 +28,33 @@ const NavBar = () => {
   );
 };
 
+const options = [
+  "💙",
+  "🐈‍⬛",
+  "🎸",
+  "🎮",
+  "👾",
+  "📖",
+  "📝",
+  "🤖",
+  "🪴",
+  "🏋️",
+  "🚴",
+  "🎧",
+  "🎺",
+  "🪕",
+  "🎼",
+];
+
+const getRandomEmoji = () => {
+  return options[Math.floor(Math.random() * options.length)];
+};
+
 const Header = ({ navBarTitle, fullWidth }) => {
   const useSticky = !BLOG.autoCollapsedNavBar;
   const navRef = useRef(null);
   const sentinalRef = useRef([]);
+  const [emoji, setEmoji] = useState(getRandomEmoji);
   const handler = ([entry]) => {
     if (navRef && navRef.current && useSticky) {
       if (!entry.isIntersecting && entry !== undefined) {
@@ -45,6 +68,10 @@ const Header = ({ navBarTitle, fullWidth }) => {
   };
 
   useEffect(() => {
+    setEmoji(getRandomEmoji());
+  }, []);
+
+  useEffect(() => {
     const obvserver = new window.IntersectionObserver(handler);
     obvserver.observe(sentinalRef.current);
     // Don't touch this, I have no idea how it works XD
@@ -53,27 +80,6 @@ const Header = ({ navBarTitle, fullWidth }) => {
     // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sentinalRef]);
-
-  const getRandomEmoji = () => {
-    const options = [
-      "💙",
-      "🐈‍⬛",
-      "🎸",
-      "🎮",
-      "👾",
-      "📖",
-      "📝",
-      "🤖",
-      "🪴",
-      "🏋️",
-      "🚴",
-      "🎧",
-      "🎺",
-      "🪕",
-      "🎼",
-    ];
-    return options[Math.floor(Math.random() * options.length)];
-  };
 
   return (
     <>
@@ -88,9 +94,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
         <div className="flex items-center">
           <Link href="/">
             <a aria-label={BLOG.title}>
-              <div style={{ scale: "2.3", paddingLeft: "1rem" }}>
-                🏠{getRandomEmoji()}
-              </div>
+              <div style={{ scale: "2.3", paddingLeft: "1rem" }}>🏠{emoji}</div>
             </a>
           </Link>
           {navBarTitle ? (
