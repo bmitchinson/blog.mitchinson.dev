@@ -2,6 +2,7 @@ import Layout from "@/layouts/layout";
 import { getAllPosts, getPostBlocks } from "@/lib/notion";
 import BLOG from "@/blog.config";
 import { createHash } from "crypto";
+import Error from "next/error";
 
 const BlogPost = ({ post, blockMap, emailHash }) => {
   if (!post) return null;
@@ -24,8 +25,15 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
+  // refactor: can we fetch by slug? instead of fetching all posts?
   const posts = await getAllPosts({ includePages: true });
   const post = posts.find((t) => t.slug === slug);
+  if (!post) {
+    // 404.js
+    return {
+      notFound: true,
+    };
+  }
   const blockMap = await getPostBlocks(post.id);
   const emailHash = createHash("md5")
     .update(BLOG.email)
