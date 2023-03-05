@@ -2,7 +2,6 @@ import Layout from "@/layouts/layout";
 import { getAllPosts, getPostBlocks } from "@/lib/notion";
 import BLOG from "@/blog.config";
 import { createHash } from "crypto";
-import Error from "next/error";
 
 const BlogPost = ({ post, blockMap, emailHash }) => {
   if (!post) return null;

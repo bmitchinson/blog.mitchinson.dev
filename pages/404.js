@@ -1,5 +1,5 @@
 import BLOG from "@/blog.config";
-import { flex } from "tailwindcss/defaultTheme";
+import Image from "next/image";
 
 export default function Custom404() {
   return (
@@ -22,7 +22,10 @@ export default function Custom404() {
         className="text-gray-600 dark:text-gray-400"
       >
         <div style={{ paddingBottom: "2em" }}>
-          <img src="https://res.cloudinary.com/dheqbiqti/image/upload/v1677985300/BenMitchinson.com/theo_404.png"></img>
+          <Image
+            src="https://res.cloudinary.com/dheqbiqti/image/upload/v1677985300/BenMitchinson.com/theo_404.png"
+            alt="my cat theo"
+          ></Image>
         </div>
         <p>404 - Page Not Found 😬</p>
         <p>{"Looks like you've reached a dead end :("}</p>

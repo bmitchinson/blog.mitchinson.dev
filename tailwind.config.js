@@ -15,8 +15,6 @@ module.exports = {
         },
       },
       fontFamily: {
-        // sans: ['"IBM Plex Sans"', ...fontFamily.sans, ...fontSansCJK],
-        // serif: ['"Source Serif"', ...fontFamily.serif, ...fontSerifCJK],
         montserrat: ['"Montserrat"', "sans-serif"],
         noEmoji: [
           '"IBM Plex Sans"',
