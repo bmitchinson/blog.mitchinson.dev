@@ -9,6 +9,8 @@ const NavBar = () => {
     { id: 1, name: locale.NAV.ABOUT, to: "https://mitchinson.dev" },
     { id: 2, name: locale.NAV.INDEX, to: BLOG.path || "/" },
     { id: 3, name: locale.NAV.SEARCH, to: "/search" },
+    { id: 4, name: "Twitter", to: "https://twitter.com/115bwm" },
+    { id: 5, name: "Github", to: "https://github.com/bmitchinson" },
   ];
   return (
     <div className="flex-shrink-0">
