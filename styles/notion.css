@@ -85,3 +85,12 @@ pre[class*="language-"] {
 .notion-collection-row {
   @apply hidden;
 }
+
+/* Further Nobelium Overrides */
+.notion-list li {
+  padding: 0
+}
+
+.notion-blank {
+  height: 0rem;
+}

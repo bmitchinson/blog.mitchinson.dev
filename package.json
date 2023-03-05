@@ -17,20 +17,22 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "next-sitemap --config next-sitemap.config.js"
+    "postbuild": "next-sitemap --config next-sitemap.config.js",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "axios": ">=0.21.1",
     "feed": "^4.2.2",
     "gitalk": "^1.7.2",
     "next": "^12.3.2",
-    "notion-client": "^4.10.0",
-    "notion-utils": "^4.10.0",
+    "notion-client": "^6.16.0",
+    "notion-utils": "^6.16.0",
+    "patch-package": "^6.5.1",
     "preact": "^10.5.15",
     "react": "^17.0.2",
     "react-cusdis": "^2.0.1",
     "react-dom": "^17.0.2",
-    "react-notion-x": "^4.11.0",
+    "react-notion-x": "^6.16.0",
     "use-ackee": "^3.0.0"
   },
   "devDependencies": {
