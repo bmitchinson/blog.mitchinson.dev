@@ -12,6 +12,11 @@ import dynamic from "next/dynamic";
 const Code = dynamic(() =>
   import("react-notion-x/build/third-party/code").then((m) => m.Code)
 );
+const Collection = dynamic(() =>
+  import("react-notion-x/build/third-party/collection").then(
+    (m) => m.Collection
+  )
+);
 
 const mapPageUrl = (id) => {
   return "https://www.notion.so/" + id.replace(/-/g, "");
@@ -74,10 +79,13 @@ const Layout = ({
           <div className="-mt-4">
             <NotionRenderer
               recordMap={blockMap}
+              // previewImages={true}
+              // https://github.com/NotionX/react-notion-x/blob/2a48b29554b4ecf3cf49db808c8660726717e255/examples/full/components/NotionPage.tsx#L166
               components={{
-                Code: Code,
-                nextImage: Image,
+                Code,
+                Collection,
                 nextLink: Link,
+                nextImage: Image,
               }}
               mapPageUrl={mapPageUrl}
             />
