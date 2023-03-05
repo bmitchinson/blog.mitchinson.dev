@@ -1,18 +1,17 @@
 import Image from "next/image";
 import Container from "@/components/Container";
 import TagItem from "@/components/TagItem";
-import {
-  NotionRenderer,
-  Equation,
-  Code,
-  Collection,
-  CollectionRow,
-} from "react-notion-x";
+import { NotionRenderer, Equation, Collection } from "react-notion-x";
 import BLOG from "@/blog.config";
 import formatDate from "@/lib/formatDate";
 import { useLocale } from "@/lib/locale";
 import { useRouter } from "next/router";
 import Comments from "@/components/Comments";
+import Link from "next/link";
+import dynamic from "next/dynamic";
+const Code = dynamic(() =>
+  import("react-notion-x/build/third-party/code").then((m) => m.Code)
+);
 
 const mapPageUrl = (id) => {
   return "https://www.notion.so/" + id.replace(/-/g, "");
@@ -76,10 +75,11 @@ const Layout = ({
             <NotionRenderer
               recordMap={blockMap}
               components={{
-                equation: Equation,
-                code: Code,
-                collection: Collection,
-                collectionRow: CollectionRow,
+                Equation: Equation,
+                Code: Code,
+                Collection: Collection,
+                nextImage: Image,
+                nextLink: Link,
               }}
               mapPageUrl={mapPageUrl}
             />
