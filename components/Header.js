@@ -6,27 +6,23 @@ import { useLocale } from "@/lib/locale";
 const NavBar = () => {
   const locale = useLocale();
   const links = [
-    { id: 0, name: locale.NAV.INDEX, to: BLOG.path || "/", show: true },
-    { id: 1, name: locale.NAV.ABOUT, to: "/about", show: BLOG.showAbout },
-    { id: 2, name: locale.NAV.RSS, to: "/feed", show: true },
-    { id: 3, name: locale.NAV.SEARCH, to: "/search", show: true },
+    { id: 1, name: locale.NAV.ABOUT, to: "https://mitchinson.dev" },
+    { id: 2, name: locale.NAV.INDEX, to: BLOG.path || "/" },
+    { id: 3, name: locale.NAV.SEARCH, to: "/search" },
   ];
   return (
     <div className="flex-shrink-0">
       <ul className="flex flex-row">
-        {links.map(
-          (link) =>
-            link.show && (
-              <li
-                key={link.id}
-                className="block ml-4 text-black dark:text-gray-50 nav"
-              >
-                <Link href={link.to}>
-                  <a>{link.name}</a>
-                </Link>
-              </li>
-            )
-        )}
+        {links.map((link) => (
+          <li
+            key={link.id}
+            className="block ml-4 text-black dark:text-gray-50 nav"
+          >
+            <Link href={link.to}>
+              <a>{link.name}</a>
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
@@ -105,10 +101,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
               {navBarTitle}
             </p>
           ) : (
-            <p className="ml-2 font-medium text-day dark:text-night header-name">
-              {BLOG.title},{" "}
-              <span className="font-normal">{BLOG.description}</span>
-            </p>
+            <p className="ml-2 font-medium text-day dark:text-night header-name"></p>
           )}
         </div>
         <NavBar />

@@ -2,7 +2,7 @@ const BLOG = {
   title: "Ben Mitchinson",
   author: "Ben Mitchinson",
   email: "mitchinson.dev@gmail.com",
-  link: "https://mitchinson.dev",
+  link: "https://blog.mitchinson.dev",
   description: "",
   lang: "en-US", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   appearance: "auto", // ['light', 'dark', 'auto'],

@@ -1,5 +1,4 @@
 import BLOG from "@/blog.config";
-import Vercel from "@/components/Vercel";
 const Footer = ({ fullWidth }) => {
   const d = new Date();
   const y = d.getFullYear();
@@ -16,7 +15,11 @@ const Footer = ({ fullWidth }) => {
           <p>
             © {BLOG.author} {from === y || !from ? y : `${from} - ${y}`}
           </p>
-          <Vercel />
+          <p>
+            <a href="https://github.com/bmitchinson/nobelium-mitchinson-dev">
+              Nobelium Theme
+            </a>
+          </p>
         </div>
       </div>
     </div>
