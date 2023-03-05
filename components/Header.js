@@ -28,27 +28,6 @@ const NavBar = () => {
   );
 };
 
-const getRandomEmoji = () => {
-  const options = [
-    "💙",
-    "🐈‍⬛",
-    "🎸",
-    "🎮",
-    "👾",
-    "📖",
-    "📝",
-    "🤖",
-    "🪴",
-    "🏋️",
-    "🚴",
-    "🎧",
-    "🎺",
-    "🪕",
-    "🎼",
-  ];
-  return options[Math.floor(Math.random() * options.length)];
-};
-
 const Header = ({ navBarTitle, fullWidth }) => {
   const useSticky = !BLOG.autoCollapsedNavBar;
   const navRef = useRef(null);
@@ -74,6 +53,28 @@ const Header = ({ navBarTitle, fullWidth }) => {
     // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sentinalRef]);
+
+  const getRandomEmoji = () => {
+    const options = [
+      "💙",
+      "🐈‍⬛",
+      "🎸",
+      "🎮",
+      "👾",
+      "📖",
+      "📝",
+      "🤖",
+      "🪴",
+      "🏋️",
+      "🚴",
+      "🎧",
+      "🎺",
+      "🪕",
+      "🎼",
+    ];
+    return options[Math.floor(Math.random() * options.length)];
+  };
+
   return (
     <>
       <div className="observer-element h-4 md:h-12" ref={sentinalRef}></div>
