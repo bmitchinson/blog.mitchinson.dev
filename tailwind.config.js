@@ -1,12 +1,4 @@
 const BLOG = require("./blog.config");
-const { fontFamily } = require("tailwindcss/defaultTheme");
-const CJK = require("./lib/cjk");
-const fontSansCJK = !CJK()
-  ? []
-  : [`"Noto Sans CJK ${CJK()}"`, `"Noto Sans ${CJK()}"`];
-const fontSerifCJK = !CJK()
-  ? []
-  : [`"Noto Serif CJK ${CJK()}"`, `"Noto Serif ${CJK()}"`];
 
 module.exports = {
   mode: "jit",
@@ -23,8 +15,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['"IBM Plex Sans"', ...fontFamily.sans, ...fontSansCJK],
-        serif: ['"Source Serif"', ...fontFamily.serif, ...fontSerifCJK],
+        // sans: ['"IBM Plex Sans"', ...fontFamily.sans, ...fontSansCJK],
+        // serif: ['"Source Serif"', ...fontFamily.serif, ...fontSerifCJK],
+        montserrat: ['"Montserrat"', "sans-serif"],
         noEmoji: [
           '"IBM Plex Sans"',
           "ui-sans-serif",

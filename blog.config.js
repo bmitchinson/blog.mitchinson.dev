@@ -7,7 +7,7 @@ const BLOG = {
   description: "",
   lang: "en-US", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   appearance: "auto", // ['light', 'dark', 'auto'],
-  font: "sans-serif", // ['sans-serif', 'serif']
+  font: "font-montserrat", // defined in tailwind.config.js fontFamily
   lightBackground: "#ffffff", // use hex value, don't forget '#' e.g #fffefc
   darkBackground: "#18181B", // use hex value, don't forget '#'
   path: "", // leave this empty unless you want to deploy Nobelium in a folder

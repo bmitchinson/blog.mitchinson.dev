@@ -3,7 +3,7 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/fonts/IBMPlexSansVar-Roman.woff2",
+      "source": "/fonts/montserrat-v25-latin-300italic.woff2",
       "headers": [
         {
           "key": "Cache-Control",
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "source": "/fonts/IBMPlexSansVar-Italic.woff2",
+      "source": "/fonts/montserrat-v25-latin-300italic.woff",
       "headers": [
         {
           "key": "Cache-Control",
@@ -21,7 +21,7 @@
       ]
     },
     {
-      "source": "/fonts/SourceSerif.var.woff2",
+      "source": "/fonts/montserrat-v25-latin-regular.woff2",
       "headers": [
         {
           "key": "Cache-Control",
@@ -30,7 +30,7 @@
       ]
     },
     {
-      "source": "/fonts/SourceSerif-Italic.var.woff2",
+      "source": "/fonts/montserrat-v25-latin-regular.woff",
       "headers": [
         {
           "key": "Cache-Control",
