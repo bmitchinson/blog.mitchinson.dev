@@ -1,6 +1,12 @@
 module.exports = {
   images: {
-    domains: ["gravatar.com", "res.cloudinary.com"],
+    domains: [
+      "gravatar.com",
+      "res.cloudinary.com",
+      "www.notion.so",
+      "notion.so",
+      "s3.us-west-2.amazonaws.com",
+    ],
   },
   eslint: {
     dirs: ["components", "layouts", "lib", "pages"],
