@@ -7,6 +7,7 @@ module.exports = {
       "notion.so",
       "s3.us-west-2.amazonaws.com",
     ],
+    formats: ["image/avif", "image/webp"],
   },
   eslint: {
     dirs: ["components", "layouts", "lib", "pages"],

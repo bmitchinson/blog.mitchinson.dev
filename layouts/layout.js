@@ -79,7 +79,7 @@ const Layout = ({
           <div className="-mt-4">
             <NotionRenderer
               recordMap={blockMap}
-              // previewImages={true}
+              previewImages={true}
               // https://github.com/NotionX/react-notion-x/blob/2a48b29554b4ecf3cf49db808c8660726717e255/examples/full/components/NotionPage.tsx#L166
               components={{
                 Code,
