@@ -22,8 +22,25 @@ export default function Custom404() {
         className="text-gray-600 dark:text-gray-400"
       >
         <div style={{ paddingBottom: "2em" }}>
+          <a
+            href={BLOG.aboutLink}
+            className="text-xl"
+            style={{ textDecoration: "underline" }}
+          >
+            About Me
+          </a>{" "}
+          -{" "}
+          <a
+            href={BLOG.link}
+            className="text-xl"
+            style={{ textDecoration: "underline" }}
+          >
+            Blog
+          </a>
+        </div>
+        <div style={{ paddingBottom: "2em" }}>
           <Image
-            src="https://res.cloudinary.com/dheqbiqti/image/upload/v1677985300/BenMitchinson.com/theo_404.png"
+            src="https://res.cloudinary.com/dheqbiqti/image/upload/v1679284720/theo.png"
             alt="my cat theo"
             width={380}
             height={380}
@@ -36,15 +53,6 @@ export default function Custom404() {
             If I have a link out of date, please let me know @
             mitchinson.dev@gmail.com
           </p>
-          <div>
-            <a href={BLOG.aboutLink} style={{ textDecoration: "underline" }}>
-              About Me
-            </a>{" "}
-            -{" "}
-            <a href={BLOG.link} style={{ textDecoration: "underline" }}>
-              Blog
-            </a>
-          </div>
         </div>
       </div>
     </div>
