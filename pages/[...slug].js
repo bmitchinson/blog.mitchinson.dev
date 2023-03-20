@@ -24,9 +24,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
+  const path = slug.reduce((p, c) => `${p}/${c}`);
   // refactor: can we fetch by slug? instead of fetching all posts?
   const posts = await getAllPosts({ includePages: true });
-  const post = posts.find((t) => t.slug === slug);
+  const post = posts.find((t) => t.slug === path);
   if (!post) {
     // 404.js
     return {
