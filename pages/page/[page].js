@@ -21,6 +21,12 @@ export async function getStaticProps(context) {
     BLOG.postsPerPage * (page - 1),
     BLOG.postsPerPage * page
   );
+  if (postsToShow === 0) {
+    // 404.js
+    return {
+      notFound: true,
+    };
+  }
   const totalPosts = posts.length;
   const showNext = page * BLOG.postsPerPage < totalPosts;
   return {
