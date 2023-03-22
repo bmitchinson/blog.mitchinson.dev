@@ -5,11 +5,11 @@ const Tags = ({ tags, currentTag }) => {
   return (
     <div className="tag-container">
       <ul className="flex max-w-full mt-4 overflow-x-auto">
-        {Object.keys(tags).map((key) => {
-          const selected = key === currentTag;
+        {Object.keys(tags).map((tag) => {
+          const selected = tag === currentTag;
           return (
             <li
-              key={key}
+              key={tag}
               className={`mr-3 font-medium border whitespace-nowrap dark:text-gray-300 ${
                 selected
                   ? "text-white bg-black border-black dark:bg-gray-600 dark:border-gray-600"
@@ -17,10 +17,10 @@ const Tags = ({ tags, currentTag }) => {
               }`}
             >
               <Link
-                key={key}
-                href={selected ? "/search" : `/tag/${encodeURIComponent(key)}`}
+                key={tag}
+                href={selected ? "/search" : `/tag/${encodeURIComponent(tag)}`}
               >
-                <a className="px-4 py-2 block">{`${key} (${tags[key]})`}</a>
+                <a className="px-4 py-2 block">{`${tag} (${tags[tag]})`}</a>
               </Link>
             </li>
           );

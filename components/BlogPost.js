@@ -49,13 +49,17 @@ const BlogPost = ({ post }) => {
                 }}
               >
                 {post.tags.map(({ tag, color }, i) => (
-                  <span
+                  <Link
+                    href={`${BLOG.path}/tag/${tag}`}
                     key={`${post.id}-${i}`}
-                    className={`text-xs font-semibold inline-block py-1 px-2 uppercase rounded ${colorVariants[color]} uppercase last:mr-0 mr-1`}
                   >
-                    {/* https://www.creative-tim.com/learning-lab/tailwind-starter-kit/documentation/css/labels */}
-                    {tag}
-                  </span>
+                    <span
+                      className={`text-xs font-semibold inline-block py-1 px-2 uppercase rounded ${colorVariants[color]} uppercase last:mr-0 mr-1`}
+                    >
+                      {/* https://www.creative-tim.com/learning-lab/tailwind-starter-kit/documentation/css/labels */}
+                      {tag}
+                    </span>
+                  </Link>
                 ))}
               </div>
             )}

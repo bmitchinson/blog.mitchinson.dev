@@ -10,7 +10,8 @@ export async function getStaticProps({ params }) {
   const posts = await getAllPosts({ includePages: false });
   const tags = getAllTagsFromPosts(posts);
   const filteredPosts = posts.filter(
-    (post) => post && post.tags && post.tags.includes(currentTag)
+    (post) =>
+      post && post.tags && post.tags.map(({ tag }) => tag).includes(currentTag)
   );
   return {
     props: {
