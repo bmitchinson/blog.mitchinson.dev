@@ -45,34 +45,42 @@ const Layout = ({
           {frontMatter.title}
         </h1>
         {frontMatter.type[0] !== "Page" && (
-          <nav className="flex mt-7 items-start text-gray-500 dark:text-gray-400">
-            <div className="flex mb-4">
-              <a href={BLOG.socialLink || "#"} className="flex">
-                <Image
-                  alt={BLOG.author}
-                  width={24}
-                  height={24}
-                  src={`https://gravatar.com/avatar/${emailHash}`}
-                  className="rounded-full"
-                />
-                <p className="ml-2 md:block">{BLOG.author}</p>
-              </a>
-              <span className="block">&nbsp;/&nbsp;</span>
-            </div>
-            <div className="mr-2 mb-4 md:ml-0">
-              {formatDate(
-                frontMatter?.date?.start_date || frontMatter.createdTime,
-                BLOG.lang
-              )}
-            </div>
-            {frontMatter.tags && (
-              <div className="flex flex-nowrap max-w-full overflow-x-auto article-tags">
-                {frontMatter.tags.map((tag) => (
-                  <TagItem key={tag} tag={tag} />
-                ))}
+          <>
+            <nav className="flex mt-7 items-start text-gray-500 dark:text-gray-400">
+              <div className="flex mb-4">
+                <a href={BLOG.socialLink || "#"} className="flex">
+                  <Image
+                    alt={BLOG.author}
+                    width={24}
+                    height={24}
+                    src={`https://gravatar.com/avatar/${emailHash}`}
+                    className="rounded-full"
+                  />
+                  <p className="ml-2 md:block">{BLOG.author}</p>
+                </a>
+                <span className="block">&nbsp;/&nbsp;</span>
               </div>
-            )}
-          </nav>
+              <div className="mr-2 mb-4 md:ml-0">
+                {formatDate(
+                  frontMatter?.date?.start_date || frontMatter.createdTime,
+                  BLOG.lang
+                )}
+              </div>
+            </nav>
+            <div
+              className="tag-color flex flex-row flex-wrap"
+              style={{
+                paddingTop: ".3em",
+                rowGap: ".7em",
+                columnGap: ".3em",
+              }}
+            >
+              {frontMatter.tags &&
+                frontMatter.tags.map(({ tag, color }) => (
+                  <TagItem key={tag} tag={tag} color={color} />
+                ))}
+            </div>
+          </>
         )}
         {children}
         {blockMap && (
