@@ -52,15 +52,15 @@ const options = [
   "🎨",
 ];
 
-const getRandomEmoji = () => {
+function getRandomEmoji() {
   return options[Math.floor(Math.random() * options.length)];
-};
+}
 
 const Header = ({ navBarTitle, fullWidth }) => {
   const useSticky = !BLOG.autoCollapsedNavBar;
   const navRef = useRef(null);
   const sentinalRef = useRef([]);
-  const [emoji, setEmoji] = useState(getRandomEmoji);
+  const [emoji, setEmoji] = useState("");
   const handler = ([entry]) => {
     if (navRef && navRef.current && useSticky) {
       if (!entry.isIntersecting && entry !== undefined) {
@@ -100,9 +100,21 @@ const Header = ({ navBarTitle, fullWidth }) => {
         <div className="flex items-center">
           <Link href="/">
             <a aria-label={BLOG.title}>
-              <div style={{ scale: "2.3", paddingLeft: "1rem" }}>🏠{emoji}</div>
+              <div
+                style={{ scale: "2.3", marginLeft: "1rem" }}
+                onClick={() => setEmoji(getRandomEmoji())}
+              >
+                🏠
+              </div>
             </a>
           </Link>
+          <div
+            style={{ scale: "2.3", marginLeft: "1.7rem", cursor: "default" }}
+            onMouseEnter={() => setEmoji(getRandomEmoji())}
+            onMouseLeave={() => setEmoji(getRandomEmoji())}
+          >
+            {emoji}
+          </div>
           {navBarTitle ? (
             <p className="ml-2 font-medium text-day dark:text-night header-name">
               {navBarTitle}
