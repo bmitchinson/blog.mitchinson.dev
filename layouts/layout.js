@@ -46,6 +46,19 @@ const Layout = ({
         </h1>
         {frontMatter.type[0] !== "Page" && (
           <>
+            <div
+              className="tag-color flex flex-row flex-wrap"
+              style={{
+                paddingTop: ".9em",
+                rowGap: ".7em",
+                columnGap: ".3em",
+              }}
+            >
+              {frontMatter.tags &&
+                frontMatter.tags.map(({ tag, color }) => (
+                  <TagItem key={tag} tag={tag} color={color} />
+                ))}
+            </div>
             <nav className="flex mt-7 items-start text-gray-500 dark:text-gray-400">
               <div className="flex mb-4">
                 <a href={BLOG.socialLink || "#"} className="flex">
@@ -67,19 +80,6 @@ const Layout = ({
                 )}
               </div>
             </nav>
-            <div
-              className="tag-color flex flex-row flex-wrap"
-              style={{
-                paddingTop: ".3em",
-                rowGap: ".7em",
-                columnGap: ".3em",
-              }}
-            >
-              {frontMatter.tags &&
-                frontMatter.tags.map(({ tag, color }) => (
-                  <TagItem key={tag} tag={tag} color={color} />
-                ))}
-            </div>
           </>
         )}
         {children}
