@@ -89,5 +89,9 @@ pre[class*="language-"] {
 }
 
 .notion-blank {
-  height: 0rem;
+  /* height: 0rem; */
+}
+
+.notion-asset-wrapper div {
+  height: auto !important
 }
