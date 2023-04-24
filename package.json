@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "axios": ">=0.21.1",
-    "feed": "^4.2.2",
     "gitalk": "^1.7.2",
     "got": "^12.6.0",
     "lqip-modern": "^2.0.0",
