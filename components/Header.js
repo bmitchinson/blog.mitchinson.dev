@@ -52,8 +52,13 @@ const options = [
   "🎨",
 ];
 
-function getRandomEmoji() {
-  return options[Math.floor(Math.random() * options.length)];
+function getRandomEmoji(currentEmoji) {
+  const getRandom = () => options[Math.floor(Math.random() * options.length)];
+  let emoji = getRandom();
+  while (emoji === currentEmoji) {
+    emoji = getRandom();
+  }
+  return emoji;
 }
 
 const Header = ({ navBarTitle, fullWidth }) => {
@@ -75,6 +80,9 @@ const Header = ({ navBarTitle, fullWidth }) => {
 
   useEffect(() => {
     setEmoji(getRandomEmoji());
+    return setInterval(() => {
+      setEmoji(getRandomEmoji());
+    }, 2000);
   }, []);
 
   useEffect(() => {

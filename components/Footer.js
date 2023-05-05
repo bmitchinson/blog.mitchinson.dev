@@ -17,7 +17,7 @@ const Footer = ({ fullWidth }) => {
           </p>
           <p>
             <a href="https://github.com/bmitchinson/nobelium-mitchinson-dev">
-              Nobelium Theme
+              Source Code
             </a>
           </p>
         </div>
