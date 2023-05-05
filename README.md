@@ -10,7 +10,7 @@ Recent posts are also shown in my [github bio](https://github.com/bmitchinson), 
 ## Fork details
 
 - Fork of [nobelium](https://github.com/craigary/nobelium)
-- Original readme(/nobelium_readme.md)
+- Original [readme](/nobelium_readme.md)
 
 ### Site Additions:
 
