@@ -118,8 +118,6 @@ const Header = ({ navBarTitle, fullWidth }) => {
           </Link>
           <div
             style={{ scale: "2.3", marginLeft: "1.7rem", cursor: "default" }}
-            onMouseEnter={() => setEmoji(getRandomEmoji())}
-            onMouseLeave={() => setEmoji(getRandomEmoji())}
           >
             {emoji}
           </div>
