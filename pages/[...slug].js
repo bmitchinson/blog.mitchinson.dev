@@ -15,17 +15,8 @@ const BlogPost = ({ post, blockMap, emailHash }) => {
   );
 };
 
-export async function getStaticPaths() {
-  const posts = await getAllPosts({ includePages: true });
-  return {
-    paths: posts.map((row) => `${BLOG.path}/${row.slug}`),
-    fallback: true,
-  };
-}
-
-export async function getStaticProps({ params: { slug } }) {
+export async function getServerSideProps({ params: { slug } }) {
   const path = slug.reduce((p, c) => `${p}/${c}`);
-  // refactor: can we fetch by slug? instead of fetching all posts?
   const posts = await getAllPosts({ includePages: true });
   const post = posts.find((t) => t.slug === path);
   if (!post) {
@@ -43,7 +34,6 @@ export async function getStaticProps({ params: { slug } }) {
 
   return {
     props: { post, blockMap, emailHash },
-    revalidate: 1,
   };
 }
 
