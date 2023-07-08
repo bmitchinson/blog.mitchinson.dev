@@ -4,7 +4,7 @@ const BLOG = {
   email: "mitchinson.dev@gmail.com",
   link: "https://blog.mitchinson.dev",
   aboutLink: "https://mitchinson.dev",
-  description: "",
+  description: "Blog of Ben Mitchinson",
   lang: "en-US", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   appearance: "auto", // ['light', 'dark', 'auto'],
   font: "font-montserrat", // defined in tailwind.config.js fontFamily
