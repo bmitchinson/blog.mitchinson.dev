@@ -15,7 +15,15 @@ const BlogPost = ({ post, blockMap, emailHash }) => {
   );
 };
 
-export async function getServerSideProps({ params: { slug } }) {
+export async function getStaticPaths() {
+  const posts = await getAllPosts({ includePages: true });
+  return {
+    paths: posts.map((row) => `${BLOG.path}/${row.slug}`),
+    fallback: true,
+  };
+}
+
+export async function getStaticProps({ params: { slug } }) {
   const path = slug.reduce((p, c) => `${p}/${c}`);
   const posts = await getAllPosts({ includePages: true });
   const post = posts.find((t) => t.slug === path);
