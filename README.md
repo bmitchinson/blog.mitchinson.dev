@@ -38,3 +38,5 @@ Recent posts are also shown in my [github bio](https://github.com/bmitchinson), 
 - Rebuilt every hour with an action in [bmitchinson/bmitchinson](github.com/bmitchinson/bmitchinson)
   triggering a build.
   - [How to trigger a build](https://benborgers.com/posts/vercel-schedule)
+  - Before 404ing a route that didn't exist during the last build,
+    vercel will check that notion doesn't have the route.
