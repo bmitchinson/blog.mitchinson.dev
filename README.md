@@ -22,6 +22,7 @@ Recent posts are also shown in my [github bio](https://github.com/bmitchinson), 
 - Add rotating emojis to the title bar
 - Add home button
 - NextImage preview blurs for lazy loading image assets
+- Remove "re-render all pages every 1 second" in favor of site wide hourly rebuild
 
 ### Tooling Additions:
 
@@ -31,3 +32,9 @@ Recent posts are also shown in my [github bio](https://github.com/bmitchinson), 
 - Remove google analytics
 - Remove broken rss feed
 - When running locally, draft pages and posts will be shown.
+
+## Notes
+
+- Rebuilt every hour with an action in [bmitchinson/bmitchinson](github.com/bmitchinson/bmitchinson)
+  triggering a build.
+  - [How to trigger a build](https://benborgers.com/posts/vercel-schedule)
