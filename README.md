@@ -22,7 +22,8 @@ Recent posts are also shown in my [github bio](https://github.com/bmitchinson), 
 - Add rotating emojis to the title bar
 - Add home button
 - NextImage preview blurs for lazy loading image assets
-- Remove "re-render all pages every 1 second" in favor of site wide hourly rebuild
+- Remove "re-render all pages every 1 second" in favor of auto-rebuilding when
+  notion posts change.
 
 ### Tooling Additions:
 
