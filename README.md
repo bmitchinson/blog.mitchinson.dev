@@ -18,12 +18,15 @@ Recent posts are also shown in my [github bio](https://github.com/bmitchinson), 
 - Fix responsive video + image sizes based on notion width.
 - Add post color reflective keyword tags to index, pages, and search.
 - Adds a 404 page
+  - Before 404ing a route that didn't exist during the last build,
+    vercel will check that notion doesn't now have the page.
 - Improve code block styles
 - Add rotating emojis to the title bar
 - Add home button
 - NextImage preview blurs for lazy loading image assets
-- Remove "re-render all pages every 1 second" in favor of auto-rebuilding when
-  notion posts change.
+- Remove "re-render all pages every 1 second" in favor of auto-rebuilding
+  elsewhere when notion posts change.
+  - Fixes link clicks taking several seconds to reach out to notion to load
 
 ### Tooling Additions:
 
@@ -36,8 +39,6 @@ Recent posts are also shown in my [github bio](https://github.com/bmitchinson), 
 
 ## Notes
 
-- Rebuilt every hour with an action in [bmitchinson/bmitchinson](github.com/bmitchinson/bmitchinson)
-  triggering a build.
+- Rebuilt with an action in [bmitchinson/bmitchinson](github.com/bmitchinson/bmitchinson)
+  triggering a build depending on recent page edits.
   - [How to trigger a build](https://benborgers.com/posts/vercel-schedule)
-  - Before 404ing a route that didn't exist during the last build,
-    vercel will check that notion doesn't have the route.
