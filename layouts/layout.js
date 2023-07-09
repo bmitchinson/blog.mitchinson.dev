@@ -9,6 +9,8 @@ import { useRouter } from "next/router";
 import Comments from "@/components/Comments";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import TweetEmbed from "react-tweet-embed";
+
 const Code = dynamic(() =>
   import("react-notion-x/build/third-party/code").then((m) => m.Code)
 );
@@ -20,6 +22,10 @@ const Collection = dynamic(() =>
 
 const mapPageUrl = (id) => {
   return "https://www.notion.so/" + id.replace(/-/g, "");
+};
+
+const Tweet = ({ id }) => {
+  return <TweetEmbed tweetId={id} />;
 };
 
 const Layout = ({
@@ -94,6 +100,7 @@ const Layout = ({
                 Collection,
                 nextLink: Link,
                 nextImage: Image,
+                Tweet,
               }}
               mapPageUrl={mapPageUrl}
             />
