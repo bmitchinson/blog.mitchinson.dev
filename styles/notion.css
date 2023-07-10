@@ -105,6 +105,14 @@ pre[class*="language-"] {
   border-top: 2px solid;
 }
 
+.notion-external {
+  background: #fff;
+}
+
 .notion-external:hover {
   background: #fff;
+}
+
+.notion-external-mention .notion-external-title {
+  border-bottom: none;
 }
