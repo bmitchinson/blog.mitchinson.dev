@@ -95,3 +95,16 @@ pre[class*="language-"] {
 .notion-asset-wrapper div {
   height: auto !important
 }
+
+.notion-table-of-contents-item {
+  @apply dark:text-white;
+}
+
+.notion-hr {
+  width: 100%;
+  border-top: 2px solid;
+}
+
+.notion-external:hover {
+  background: #fff;
+}
