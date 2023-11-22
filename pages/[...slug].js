@@ -2,6 +2,7 @@ import Layout from "@/layouts/layout";
 import { getAllPosts, getPostBlocks } from "@/lib/notion";
 import BLOG from "@/blog.config";
 import { createHash } from "crypto";
+import { showDraftsMode } from "@/lib/utils/helpers";
 
 const BlogPost = ({ post, blockMap, emailHash }) => {
   if (!post) return null;
@@ -42,6 +43,7 @@ export async function getStaticProps({ params: { slug } }) {
 
   return {
     props: { post, blockMap, emailHash },
+    revalidate: showDraftsMode ? 1 : undefined,
   };
 }
 
