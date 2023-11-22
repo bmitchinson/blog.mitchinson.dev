@@ -1,5 +1,6 @@
 import { getAllPosts, getAllTagsFromPosts } from "@/lib/notion";
 import SearchLayout from "@/layouts/search";
+import { showDraftsMode } from "@/lib/utils/helpers";
 
 export default function Tag({ tags, posts, currentTag }) {
   return <SearchLayout tags={tags} posts={posts} currentTag={currentTag} />;
@@ -19,6 +20,7 @@ export async function getStaticProps({ params }) {
       posts: filteredPosts,
       currentTag,
     },
+    revalidate: showDraftsMode ? 1 : undefined,
   };
 }
 

@@ -3,6 +3,7 @@ import BlogPost from "@/components/BlogPost";
 import Pagination from "@/components/Pagination";
 import { getAllPosts } from "@/lib/notion";
 import BLOG from "@/blog.config";
+import { showDraftsMode } from "@/lib/utils/helpers";
 
 export async function getStaticProps() {
   const posts = await getAllPosts({ includePages: false });
@@ -15,6 +16,7 @@ export async function getStaticProps() {
       postsToShow,
       showNext,
     },
+    revalidate: showDraftsMode ? 1 : undefined,
   };
 }
 
