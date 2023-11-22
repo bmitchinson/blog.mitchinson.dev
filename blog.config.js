@@ -1,15 +1,8 @@
-// duplicated in utils
-const showDraftsMode =
-  process.env.NODE_ENV === "development" ||
-  process.env.DRAFT_MODE === "enabled";
-
 const BLOG = {
-  title: showDraftsMode ? "blog (draft) 📝" : "blog 📝",
+  title: "blog 📝",
   author: "Ben Mitchinson",
   email: "mitchinson.dev@gmail.com",
-  link: showDraftsMode
-    ? "https://draft.mitchinson.dev"
-    : "https://blog.mitchinson.dev",
+  link: "https://blog.mitchinson.dev",
   aboutLink: "https://mitchinson.dev",
   description: "Blog of Ben Mitchinson",
   lang: "en-US", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
