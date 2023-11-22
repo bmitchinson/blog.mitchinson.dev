@@ -1,4 +1,7 @@
-const { showDraftsMode } = require("./lib/utils/helpers");
+// duplicated in utils
+const showDraftsMode =
+  process.env.NODE_ENV === "development" ||
+  process.env.DRAFT_MODE === "enabled";
 
 const BLOG = {
   title: showDraftsMode ? "blog (draft) 📝" : "blog 📝",
