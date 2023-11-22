@@ -1,8 +1,12 @@
+const { showDraftsMode } = require("./lib/utils/helpers");
+
 const BLOG = {
-  title: "📝 blog.mitchinson.dev",
+  title: showDraftsMode ? "blog (draft) 📝" : "blog 📝",
   author: "Ben Mitchinson",
   email: "mitchinson.dev@gmail.com",
-  link: "https://blog.mitchinson.dev",
+  link: showDraftsMode
+    ? "https://draft.mitchinson.dev"
+    : "https://blog.mitchinson.dev",
   aboutLink: "https://mitchinson.dev",
   description: "Blog of Ben Mitchinson",
   lang: "en-US", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
