@@ -21,7 +21,6 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.0.1",
     "axios": ">=0.21.1",
     "gitalk": "^1.7.2",
     "got": "^12.6.0",
@@ -59,6 +58,6 @@
     "email": "i@craigary.net"
   },
   "engines": {
-    "yarn": "YARN NO LONGER USED - use npm instead."
+    "node": "22.x"
   }
 }

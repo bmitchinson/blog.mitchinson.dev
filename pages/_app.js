@@ -4,7 +4,6 @@ import "katex/dist/katex.min.css";
 import "@/styles/globals.css";
 import "@/styles/notion.css";
 import { LocaleProvider } from "@/lib/locale";
-import { Analytics } from "@vercel/analytics/react";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -12,7 +11,6 @@ function MyApp({ Component, pageProps }) {
       <LocaleProvider>
         <>
           <Component {...pageProps} />
-          <Analytics />
         </>
       </LocaleProvider>
     </>
