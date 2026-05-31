@@ -18,12 +18,8 @@ const BlogPost = ({ post, blockMap, emailHash }) => {
 
 export async function getStaticPaths() {
   const posts = await getAllPosts({ includePages: true });
-  const requiredBuildSlugs = new Set(["letters"]);
-
   return {
-    paths: posts
-      .filter((row) => requiredBuildSlugs.has(row.slug))
-      .map((row) => `${BLOG.path}/${row.slug}`),
+    paths: posts.map((row) => `${BLOG.path}/${row.slug}`),
     fallback: true,
   };
 }

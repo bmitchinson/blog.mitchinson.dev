@@ -1,7 +1,19 @@
 const fs = require('fs')
 const path = require('path')
 
-const requiredRoutes = ['/', '/letters']
+// These routes are content smoke tests, not just framework smoke tests.
+// If a future change only prerenders one canary page and pushes the rest of
+// the blog to runtime fallback generation, these checks should fail the build.
+const requiredPrerenderedRoutes = [
+  '/',
+  '/letters',
+  '/homelab-summer-2026',
+  '/blog-2023',
+  '/con'
+]
+const requiredHomepageSlugs = ['letters', 'homelab-summer-2026']
+const minimumPrerenderedRouteCount = 60
+
 const nextDir = path.join(process.cwd(), '.next')
 const homepageDataPath = path.join(nextDir, 'server', 'pages', 'index.json')
 const prerenderManifestPath = path.join(nextDir, 'prerender-manifest.json')
@@ -24,19 +36,33 @@ if (!fs.existsSync(pagesManifestPath)) {
   fail('missing .next/server/pages-manifest.json')
 }
 
-const prerenderManifest = JSON.parse(fs.readFileSync(prerenderManifestPath, 'utf8'))
+const prerenderManifest = JSON.parse(
+  fs.readFileSync(prerenderManifestPath, 'utf8')
+)
 const pagesManifest = JSON.parse(fs.readFileSync(pagesManifestPath, 'utf8'))
 const prerenderedRoutes = Object.keys(prerenderManifest.routes || {})
 
-for (const route of requiredRoutes) {
+if (prerenderedRoutes.length < minimumPrerenderedRouteCount) {
+  fail(
+    `expected at least ${minimumPrerenderedRouteCount} prerendered routes, ` +
+      `but found ${prerenderedRoutes.length}. This usually means post pages ` +
+      `were accidentally moved from build-time generation to runtime fallback.`
+  )
+}
+
+for (const route of requiredPrerenderedRoutes) {
   if (!prerenderedRoutes.includes(route)) {
-    const matchingRoutes = prerenderedRoutes.filter((r) =>
-      r === '/' || r.includes('letters')
+    const relatedRoutes = prerenderedRoutes.filter(
+      (r) =>
+        r === '/' ||
+        requiredPrerenderedRoutes.some((required) =>
+          r.includes(required.slice(1))
+        )
     )
 
     fail(
       `expected prerendered route "${route}" was not found. ` +
-        `Found related routes: ${matchingRoutes.length ? matchingRoutes.join(', ') : '(none)'}`
+        `Found related routes: ${relatedRoutes.length ? relatedRoutes.join(', ') : '(none)'}`
     )
   }
 }
@@ -52,8 +78,10 @@ if (!homepagePosts.length) {
   fail('homepage prerendered successfully but contains zero posts')
 }
 
-if (!homepagePosts.some((post) => post.slug === 'letters')) {
-  fail('homepage posts do not include the expected `letters` post')
+for (const slug of requiredHomepageSlugs) {
+  if (!homepagePosts.some((post) => post.slug === slug)) {
+    fail(`homepage posts do not include the expected \`${slug}\` post`)
+  }
 }
 
 if (!pagesManifest['/'] || !pagesManifest['/[...slug]']) {
@@ -61,7 +89,7 @@ if (!pagesManifest['/'] || !pagesManifest['/[...slug]']) {
 }
 
 console.log(
-  `Build output check passed: found required routes ${requiredRoutes.join(
-    ', '
-  )} and ${homepagePosts.length} homepage posts`
+  `Build output check passed: found ${prerenderedRoutes.length} prerendered routes, ` +
+    `required routes ${requiredPrerenderedRoutes.join(', ')}, and ` +
+    `${homepagePosts.length} homepage posts`
 )
