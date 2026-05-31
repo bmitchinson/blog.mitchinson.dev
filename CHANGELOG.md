@@ -11,6 +11,8 @@
 - Skips collection page ids that Notion reports but does not include in the returned block map, preventing static generation crashes.
 - Added a postbuild verification script that fails the build if expected prerendered routes, including `/letters`, `/homelab-summer-2026`, `/blog-2023`, and `/con`, are missing from the Next output, if the total prerendered route count unexpectedly drops, or if the homepage prerenders with zero posts.
 - Fixed the fallback collection-data merge so fetched Notion blocks are added to the existing record map used by page generation.
+- Added a build-time `getAllPosts` promise cache so pagination, tag, and post path generation reuse the same Notion database fetch instead of repeatedly hitting Notion and causing 429 failures.
+- Added narrow retry/backoff handling for transient Notion 429/5xx responses during database and post block fetches.
 - Normalized Notion record maps for individual post pages as well as the database listing, fixing prerender errors in `react-notion-x`.
 
 ### Notes
